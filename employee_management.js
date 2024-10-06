@@ -23,11 +23,13 @@ addEmployee(employee) {
 getDepartmentSalary() {
     return this.employees.reduce((total,em) => total + em.salary,0);
 }
+// This is Task 4
 calculateTotalSalaryWithBonus() {
-    let totalSalary = this.getDepartmentSalary();
-    let totalBonus = this.employees
-    this.employees.reduce((total,manager) => total + manager.bonus,0);
-    return totalSalary + totalBonus
+let totalSalary = this.getDepartmentSalary();
+let totalBonus = this.employees
+  .filter(emp => emp instanceof Manager)
+  .reduce((total,manager) => total + manager.bonus,0);
+return totalSalary + totalBonus
 }
 }
 
@@ -45,4 +47,47 @@ class Manager extends Employee {
 // Task 4 Handle Bonuses for Managers
 // This task was added to task 2 for smooth results
 
-// Task 5 
+
+// Task 5 Create and Manage Departments and Employees
+
+// Create departments
+
+const business = new Department("Business");
+
+const medical = new Department("Medical");
+
+
+
+// Create employees
+
+const brandon = new Employee("Brandon", 80000, "Analytics", "Business");
+
+const jake = new Employee("Jake", 75000, "Nurse", "Medical");
+
+const fred = new Manager("Fred", 120000, "Business Manager", "Business", 20000);
+
+const clark = new Manager("Clark", 130000, "Medical Manager", "Medical", 25000);
+
+
+
+// Add employees to departments
+
+business.addEmployee(brandon);
+
+medical.addEmployee(jake);
+
+business.addEmployee(fred);
+
+medical.addEmployee(clark);
+
+
+
+// Calculate total salary for each department
+
+console.log(`Total salary for Business: $${business.getDepartmentSalary()}`);
+
+console.log(`Total salary with bonuses for Business: $${business.calculateTotalSalaryWithBonus()}`);
+
+console.log(`Total salary for Medical: $${medical.getDepartmentSalary()}`);
+
+console.log(`Total salary with bonuses for Medcial: $${medical.calculateTotalSalaryWithBonus()}`);
