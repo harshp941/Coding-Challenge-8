@@ -23,6 +23,12 @@ addEmployee(employee) {
 getDepartmentSalary() {
     return this.employees.reduce((total,em) => total + em.salary,0);
 }
+calculateTotalSalaryWithBonus() {
+    let totalSalary = this.getDepartmentSalary();
+    let totalBonus = this.employees
+    this.employees.reduce((total,manager) => total + manager.bonus,0);
+    return totalSalary + totalBonus
+}
 }
 
 // Task 3 Create a Manager Class that Inherits from Employee
@@ -35,3 +41,8 @@ class Manager extends Employee {
         return `${this.name}, ${this.position}, Salary: $${this.salary}, Bonus: $${this.bonus}`;
     }
 }
+
+// Task 4 Handle Bonuses for Managers
+// This task was added to task 2 for smooth results
+
+// Task 5 
