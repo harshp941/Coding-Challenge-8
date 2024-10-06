@@ -1,4 +1,4 @@
-// Task 1 Create Employee class with properties and methods
+// Task 1 Create Employee class 
 class Employee {
     constructor(name,salary,position,department) {
     this.name = name;
@@ -11,3 +11,16 @@ class Employee {
  }
 }
 
+// Task 2 Create a Department Class
+class Department {
+    constructor(name) {
+        this.name = name;
+        this.employees = [];
+    }
+addEmployee(employee) {
+    this.employees.push(employee);
+}
+getDepartmentSalary() {
+    return this.employees.reduce((total,em) => total + em.salary,0);
+}
+}
